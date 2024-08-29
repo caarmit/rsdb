@@ -95,15 +95,4 @@ mod tests {
         assert!(execute_query(&mut database, "CREATE TABLE apple (one two));").is_err());
         assert!(execute_query(&mut database, "CREATE TABLE apple ((one two);").is_err());
     }
-
-    #[test]
-    fn test_delete_parser() {
-        let mut database = Database::new();
-        let _ = database.create_table("apple", Vec::new());
-        let _ = execute_query(&mut database, "DELETE TABLE apple");
-
-        let table = database.get_table("apple");
-
-        assert!(table.is_none());
-    }
 }

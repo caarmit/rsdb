@@ -23,3 +23,22 @@ impl Query for DeleteTableQuery {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::{database::Database, queries::query_parser};
+
+    #[test]
+    fn delete_table_valid() {
+        let mut database = Database::new();
+        database.create_table("users", Vec::new()).unwrap();
+
+        assert!(query_parser::execute_query(&mut database, "DELETE TABLE users;").is_ok());
+    }
+
+    #[test]
+    fn delete_nonexistant_table() {
+        let mut database = Database::new();
+        assert!(query_parser::execute_query(&mut database, "DELETE TABLE users;").is_err());
+    }
+}

@@ -94,4 +94,5 @@ mod tests {
             query_parser::execute_query(&mut database, "CREATE TABLE users (name string);").unwrap_err(),
         );
     }
+    
 }

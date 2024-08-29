@@ -3,7 +3,7 @@ use std::{borrow::BorrowMut, collections::HashMap};
 use crate::errors::DbErr;
 
 pub enum FieldValue {
-    I32(i32),
+    i32(i32),
 }
 
 struct TableEntry {
